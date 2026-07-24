@@ -1,76 +1,5 @@
 
 \documentclass[11pt]{article}
-\usepackage{tikz}
-\usetikzlibrary{shapes, fit}
-\usepackage{multirow}
-\usepackage{booktabs}
-\usepackage{rotating}
-\usepackage{tabularx}
- \usepackage{xcolor,soul,framed} %,caption
-\colorlet{shadecolor}{yellow}
-% \usepackage{color,soul}
-\usepackage{graphicx,epstopdf}
-\usepackage{graphicx}
-\graphicspath{{../pdf/}{../jpeg/}}
-\DeclareGraphicsExtensions{.pdf,.jpeg,.png}
-\DeclareGraphicsExtensions{.eps}
-\usepackage{epstopdf}
-\epstopdfDeclareGraphicsRule{.pdf}{png}{.png}{convert #1 \OutputFile}
-\usepackage[cmex10]{amsmath}
-\usepackage{array}
-\usepackage{amsmath}
-\usepackage{mdwmath}
-\usepackage{lipsum}
-\usepackage{mdwtab}
-\usepackage{eqparbox}
-\usepackage{siunitx}
-\usepackage{textcomp, gensymb}
-\usepackage{amsfonts}
-\usepackage[noadjust]{cite}
-\usepackage[center]{caption}
-\usepackage{subcaption}
-\usepackage[font=small,skip=2pt]{caption}
-\captionsetup{skip=0pt}
-\usepackage{comment}
-\usepackage{tikz}
-\usetikzlibrary{shapes,fit,positioning}
-\usetikzlibrary{shapes,arrows}
-\usepackage{soul}
-\usepackage{xcolor}
-\usepackage{cite}
-\sethlcolor{yellow} 
-\usepackage{enumitem}
-\usepackage{mathtools}
-\usepackage{footnote}
-\usepackage{url}
-\def\UrlBreaks{\do\/\do-}
-\usepackage{textcomp}
-\usepackage{graphicx}
-\graphicspath{{../pdf/}{../jpeg/}}
-\DeclareGraphicsExtensions{.pdf,.jpeg,.png}
-\DeclareGraphicsExtensions{.eps}
-\usepackage{epstopdf}
-\epstopdfDeclareGraphicsRule{.pdf}{png}{.png}{convert #1 \OutputFile}
-\usepackage{multicol}
-\usepackage{multirow}
-\usepackage{rotating}
-\usepackage{xcolor,soul,framed}
-\usepackage{enumitem}
-\usepackage{comment}
-\usepackage[font=small,skip=0.4pt]{caption}
-\captionsetup{skip=0pt}
-\captionsetup{justification=centering}
-\usepackage{subcaption}
-\usepackage[noadjust]{cite}
-\ifCLASSINFOpdf
-\else
-\fi
-\usepackage[T1]{fontenc} 
-\usepackage{amsmath}
-\interdisplaylinepenalty=2500
-\usepackage[cmintegrals]{newtxmath}
-\usepackage{bm}
-\usepackage{titlesec}
 \usepackage[margin=1in]{geometry}
 \usepackage{amsmath,amssymb,booktabs,array,longtable}
 \usepackage{graphicx}
@@ -317,7 +246,7 @@ Compute
 %----------------------------------------------------------
 \section*{6. Source Code}
 GitHub repository:
-\url{https://github.com/the-future-codemaster/dl_lab.git}
+\url{https://github.com/the-future-codemaster/dl_lab/tree/main/Experiment_1}
 
 
 \section*{7. Experimental Results}
@@ -571,7 +500,7 @@ A single layer perceptron is basically like a linear classifier i.e. it can  dra
 
 \item Study the effect of feature normalization on model convergence.
 
-Avoiding normalisation will give us features where the larger numbers will completely dominate the weight updates. The model will focus mostly on those larger features thereby ignoring the smaller ones. This will cause the training process to either extend or completely fail. A Z-score normalisation makes every single feature to have a mean of 0 and a standard deviation of 1. This balances and gives the error surface a much rounder shape. Therefore the gradient descent algorithm can take more direct and efficient steps toward the minimum, making convergence significantly faster.
+Avoiding normalisation will give us features where the larger numbers will completely dominate the weight updates. The model will focus mostly on those larger features thereby ignoring the smaller ones. This will cause the training process to either extend or completely fail. The Z-Score ensures every feature gives us a mean of 0 and the standard deviation of 1. This balances and gives the error surface a much rounder shape. Therefore the gradient descent algorithm can take more direct and efficient steps toward the minimum, making convergence significantly faster.
 
 \end{enumerate}
 
@@ -613,7 +542,7 @@ Thus a single layer perceptron was successfully implemented from scratch to clas
 \begin{center}
     \includegraphics[width=0.85\textwidth]{AND_Gate.eps}
 \end{center}
-\textbf{Interpretation:} For the AND gate, the only output of 1 is when both inputs are 1. The plot shows the decision boundary evolution over 8 updates across 4 epochs. Because the problem is linearly separable, the Single-Layer Perceptron correctly separates the positive class from the negative classes using a single straight line.
+\textbf{Interpretation:} When both inputs are 1, we get an output of 1 for an AND gate. The changing decision boundary is shown for the 8 updates across 3 epochs. The linear separation of the positive and the negative class using a single straight line was succesfully done by the Single-Layer Perceptron.
 
 \vspace{4mm}
 \noindent\textbf{OR Gate Training History}
@@ -638,7 +567,7 @@ Thus a single layer perceptron was successfully implemented from scratch to clas
 \begin{center}
     \includegraphics[width=0.85\textwidth]{OR_Gate.eps}
 \end{center}
-\textbf{Interpretation:} The OR gate evaluates to 1 if any input is 1. We observe the initial states progressing until update 5, where the boundary isolates the $[0,0]$ case entirely. The problem is linearly separable, which allows the perceptron to find the optimal hyperplane easily.
+\textbf{Interpretation:} When any input is 1, we get an output of 1 for an OR gate. The changing decision boundary is shown for the 5 updates across 3 epochs. It succesfully separates [0,0] from the rest. We can that the linear separation the positive and negative class was done by the Single-Layer Perceptron using an optimal hyperplane succesfully.
 
 \vspace{4mm}
 \noindent\textbf{NOT Gate Training History}
@@ -660,7 +589,7 @@ Thus a single layer perceptron was successfully implemented from scratch to clas
 \begin{center}
     \includegraphics[width=0.85\textwidth]{NOT_Gate.eps}
 \end{center}
-\textbf{Interpretation:} The NOT gate involves a 1D input. As shown in the plot evolution, the model only took 2 weight updates over 3 epochs to correctly draw a linear threshold separating the two logical states.
+\textbf{Interpretation:} The NOT gate has only 1D input. It was correctly separated in 2 updates over 3 epochs. Therefore the Single-Layer Perceptron successfully identified the 2 classes.
 
 %----------------------------------------------------------
 
