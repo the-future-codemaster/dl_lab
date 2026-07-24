@@ -1,0 +1,443 @@
+
+\documentclass[11pt]{article}
+\usepackage{tikz}
+\usetikzlibrary{shapes, fit}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{rotating}
+\usepackage{tabularx}
+ \usepackage{xcolor,soul,framed} %,caption
+\colorlet{shadecolor}{yellow}
+% \usepackage{color,soul}
+\usepackage{graphicx,epstopdf}
+\usepackage{graphicx}
+\graphicspath{{../pdf/}{../jpeg/}}
+\DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+\DeclareGraphicsExtensions{.eps}
+\usepackage{epstopdf}
+\epstopdfDeclareGraphicsRule{.pdf}{png}{.png}{convert #1 \OutputFile}
+\usepackage[cmex10]{amsmath}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{mdwmath}
+\usepackage{lipsum}
+\usepackage{mdwtab}
+\usepackage{eqparbox}
+\usepackage{siunitx}
+\usepackage{textcomp, gensymb}
+\usepackage{amsfonts}
+\usepackage[noadjust]{cite}
+\usepackage[center]{caption}
+\usepackage{subcaption}
+\usepackage[font=small,skip=2pt]{caption}
+\captionsetup{skip=0pt}
+\usepackage{comment}
+\usepackage{tikz}
+\usetikzlibrary{shapes,fit,positioning}
+\usetikzlibrary{shapes,arrows}
+\usepackage{soul}
+\usepackage{xcolor}
+\usepackage{cite}
+\sethlcolor{yellow} 
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{footnote}
+\usepackage{url}
+\def\UrlBreaks{\do\/\do-}
+\usepackage{textcomp}
+\usepackage{graphicx}
+\graphicspath{{../pdf/}{../jpeg/}}
+\DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+\DeclareGraphicsExtensions{.eps}
+\usepackage{epstopdf}
+\epstopdfDeclareGraphicsRule{.pdf}{png}{.png}{convert #1 \OutputFile}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{rotating}
+\usepackage{xcolor,soul,framed}
+\usepackage{enumitem}
+\usepackage{comment}
+\usepackage[font=small,skip=0.4pt]{caption}
+\captionsetup{skip=0pt}
+\captionsetup{justification=centering}
+\usepackage{subcaption}
+\usepackage[noadjust]{cite}
+\ifCLASSINFOpdf
+\else
+\fi
+\usepackage[T1]{fontenc} 
+\usepackage{amsmath}
+\interdisplaylinepenalty=2500
+\usepackage[cmintegrals]{newtxmath}
+\usepackage{bm}
+\usepackage{titlesec}
+\usepackage[margin=0.8in]{geometry}
+\usepackage{amsmath,amssymb,booktabs,array,longtable}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\setlist{nosep}
+
+\begin{document}
+
+\begin{center}
+{\Large\textbf{Shiv Nadar University Chennai}}\\
+\textbf{CS3807 -- Deep Learning Laboratory}\\
+\textbf{Experiment 2} - Amrut Anand - Roll: 24011101003\\
+{\large\vspace{0.2cm}\textbf{Implementation of a Multi-Layer Perceptron (MLP) for Multi-Class Image Classification}}
+\end{center}
+
+\renewcommand{\arraystretch}{1.25}
+
+\begin{tabular}{|p{3.8cm}|p{8cm}|p{2cm}|}
+\hline
+Degree \& Branch & B.Tech Artificial Intelligence \& Data Science & Semester V\\ \hline
+Subject Code \& Name & CS3807 -- Deep Learning Laboratory & AY: 2026--27\\ \hline
+\end{tabular}
+
+\section*{1. Objective}
+Implement an MLP using TensorFlow/Keras on the Fashion-MNIST dataset. Learn image preprocessing, flattening, model construction, training, evaluation, and automated hyperparameter optimization.
+
+
+\section*{2. Background Theory}
+An MLP consists of an input layer, hidden layers and an output layer.
+
+\[
+z^{(l)}=W^{(l)}a^{(l-1)}+b^{(l)},\qquad
+a^{(l)}=f(z^{(l)})
+\]
+
+Output layer:
+\[
+\hat y=\mathrm{Softmax}(z)
+\]
+
+Loss:
+\[
+L=-\sum_i y_i\log(\hat y_i)
+\]
+
+Recommended architecture:
+
+\begin{center}
+784 $\rightarrow$ Dense(128, ReLU) $\rightarrow$ Dense(64, ReLU) $\rightarrow$ Dense(10, Softmax)
+\end{center}
+
+\section*{3. Dataset Description}
+Dataset: Fashion-MNIST \\
+Training Images: 60,000 \\
+Testing Images: 10,000 \\
+Classes: 10 \\
+Image Size: $28\times28$ \\
+\vspace{0.1mm} \\
+The dataset images are stored as $28\times28$ matrices. Dense layers require a one-dimensional feature vector.
+
+\[
+28\times28=784
+\]
+
+Example:
+
+\[
+\begin{bmatrix}
+10&20\\30&40
+\end{bmatrix}
+\rightarrow
+[10,20,30,40]
+\]
+
+
+\section*{4. Experimental Procedure}
+
+\textbf{Task 1: Dataset Exploration}
+\begin{itemize}
+\item Load Fashion-MNIST.
+\item Print dataset dimensions.
+\item Display ten sample images.
+\item Plot class distribution.
+\end{itemize}
+
+\textbf{Expected Output:}
+Dataset summary and sample images.
+
+\bigskip
+
+\textbf{Task 2: Data Preprocessing}
+
+\begin{itemize}
+\item Flatten images.
+\item Normalize pixel values.
+\item Print tensor shapes before and after preprocessing.
+\end{itemize}
+
+\bigskip
+
+\textbf{Task 3: Model Construction}
+
+Construct an MLP with
+
+\begin{itemize}
+\item Input layer (784)
+\item Dense(128, ReLU)
+\item Dense(64, ReLU)
+\item Dense(10, Softmax)
+\end{itemize}
+
+Display \texttt{model.summary()}.
+
+\bigskip
+
+\textbf{Task 4: Model Training}
+
+Compile using
+
+\begin{itemize}
+\item Optimizer: Adam
+\item Loss: Categorical Cross Entropy
+\item Metric: Accuracy
+\end{itemize}
+
+Train for 20 epochs with batch size 32.
+
+\bigskip
+
+\textbf{Task 5: Model Evaluation}
+
+Compute
+
+\begin{itemize}
+\item Accuracy
+\item Precision
+\item Recall
+\item F1-score
+\item Confusion Matrix
+\item Classification Report
+\end{itemize}
+
+
+%----------------------------------------------------------
+\section*{5. Source Code}
+GitHub repository:
+\url{https://github.com/the-future-codemaster/dl_lab.git}
+
+
+\section*{6. Hyperparameter Optimization}
+
+Instead of manually selecting hyperparameters, students shall perform automated hyperparameter optimization using either \textbf{GridSearchCV} or \textbf{RandomizedSearchCV} (recommended) together with the SciKeras wrapper.
+
+Optimize the following search space.
+
+\begin{center}
+\begin{tabular}{|p{5cm}|p{7cm}|}
+\hline
+Hyperparameter & Candidate Values\\
+\hline
+Hidden Layers & 1, 2, 3\\
+Hidden Neurons & 32, 64, 128, 256\\
+Learning Rate & 0.1, 0.01, 0.001\\
+Batch Size & 16, 32, 64, 128\\
+Epochs & 10, 20, 30\\
+Optimizer & SGD, Adam, RMSProp\\
+Activation Function & ReLU, Tanh, Sigmoid\\
+Dropout Rate (Optional) & 0.0, 0.2, 0.5\\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection*{Tasks}
+
+\begin{enumerate}
+\item Build a baseline MLP model.
+\item Define the hyperparameter search space.
+\item Perform Grid Search or Randomized Search using 5-fold cross-validation.
+\item Record the best hyperparameter combination.
+\item Retrain the model using the optimized hyperparameters.
+\item Evaluate the optimized model on the testing dataset.
+\item Compare the optimized model with the baseline model.
+\end{enumerate}
+
+
+
+\section*{7. Results}
+\vspace{4mm}
+
+\noindent\textbf{Task 1: Dataset Dimensions}
+\vspace{2mm}
+
+\noindent\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Dataset Split} & \textbf{Features Shape} & \textbf{Labels Shape} \\
+\hline
+Training Set & (60000, 28, 28) & (60000,) \\
+\hline
+Testing Set & (10000, 28, 28) & (10000,) \\
+\hline
+\end{tabular}
+
+\vspace{6mm}
+\noindent\textbf{Task 2: Tensor Shapes Before and After Preprocessing}
+\vspace{2mm}
+
+\noindent\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Training Tensor} & \textbf{Original Shape} & \textbf{Preprocessed Shape} \\
+\hline
+Features ($x\_train$) & (60000, 28, 28) & (60000, 784) \\
+\hline
+Labels ($y\_train$) & (60000,) & (60000, 10) \\
+\hline
+\end{tabular}
+
+\vspace{10cm}
+\noindent\textbf{Best Hyperparameters}
+\vspace{2mm}
+
+\noindent\begin{tabular}{|p{6cm}|p{6cm}|}
+\hline
+Hidden Layers & 1\\\hline
+Hidden Neurons & 256\\\hline
+Learning Rate & 0.001\\\hline
+Batch Size & 16\\\hline
+Optimizer & adam\\\hline
+Activation Function & relu\\\hline
+Epochs & 20\\\hline
+Dropout & 0.2\\\hline
+Cross-validation Accuracy & 0.8899\\\hline
+Testing Accuracy & 0.8813\\\hline
+\end{tabular}
+
+\vspace{6mm}
+\noindent\textbf{Performance Comparison}
+\vspace{2mm}
+
+\noindent\begin{tabular}{|p{4cm}|c|c|}
+\hline
+Metric & Baseline & Optimized\\
+\hline
+Accuracy & 0.8875 & 0.8813\\
+Precision & 0.8888 & 0.8847\\
+Recall & 0.8875 & 0.8813\\
+F1-score & 0.8876 & 0.8813\\
+Training Time & 116.56 s & 6323.77 s\\
+\hline
+\end{tabular}
+
+\vspace{4mm}
+
+\section*{8. Plots \& Interpretations}
+
+
+\begin{center}
+    \includegraphics[width=0.85\textwidth]{Plot1.eps}
+\end{center}
+\noindent\textbf{Interpretation:} We can observe that some items like pullovers, coats and shirts share overlapping silhouette features. There is also observable intra-class structural diversity and inter-class geometric similarities. 
+
+\vspace{6mm}
+\begin{center}
+    \includegraphics[width=0.85\textwidth]{Plot2.eps}
+\end{center}
+\noindent\textbf{Interpretation:} This is a uniform class distribution with exactly 6000 samples for each of the 10 categories. We do not need class-weight adjustments as the symmetry avoids majority-class bias during gradient descent.
+
+\vspace{6mm}
+\begin{center}
+    \includegraphics[width=0.85\textwidth]{Plot3.eps}
+\end{center}
+\noindent\textbf{Interpretation:} The training accuracy increases monotonically till near 0.93. On the other hand validation accuracy saturates quicky and instead starts to oscillate around 0.89. This divergence conveys model overfitting where it is starting to memorising training-specific noise.
+
+\vspace{6mm}
+\begin{center}
+    \includegraphics[width=0.85\textwidth]{Plot4.eps}
+\end{center}
+\noindent\textbf{Interpretation:} The model is learning from the training data and improving because the categorical cross-entropy shows a continuous decay in training error across all 20 epochs. The validation loss reaches the global minimum early in the training cycle. Then it fluctuates before gradual increasing showing overfitting.
+
+\vspace{2mm}
+\begin{center}
+    \includegraphics[width=0.85\textwidth]{Plot7.eps}
+\end{center}
+\noindent\textbf{Interpretation:} The diagonal validates the model's predictive capability. However the few off-diagonal clusters show the semantic ambiguities present within the upper-body garments. Eg: 'Shirt' is  misclassified as 'T-shirt/top' 128 times and 'Pullover' 95 times. This shows the limitation in identifying the fine-grained textural boundaries.
+\vspace{6mm}
+\begin{center}
+    \includegraphics[width=0.85\textwidth]{Plot8.eps}
+\end{center}
+\noindent\textbf{Interpretation:} This graph shows the importance of choosing the hyperparameters correctly to reduce generalistation error. Across different combinations, some show very good CV accuracies while some are much worse showing strong dependency.
+
+\vspace{6mm}
+\begin{center}
+    \includegraphics[width=0.85\textwidth]{Plot9.eps}
+\end{center}
+\noindent\textbf{Interpretation:} We observe a decrease in the optimised model from the baseline model where accuracy goes from 88.75\% to 88.13\% and F1-Score from 88.76\% to 88.13\%. This is because of overfitting during training.
+
+\section*{9. Conclusion}
+We successfully implemented and evaluated a Multi-Layer Perceptron for the Fashion-MNIST image classification dataset. We flattened a $28\times28$ matrix and normalised it into 784-dimensional vectors. Though the baseline model had generalised well, it had some ambiguities among upper-body garments which had similar structures. \\
+
+\noindent Hyperparameter Initialisation was crucial for the convergence of the 5-fold cross-validated RandomizedSearchCV. The configuration of a single 256-neuron layer, Adam optimizer, learning rate 0.001, and 0.2 dropout had a generalisation gap on unseen testing data as opposed to the default model. Therefore for this dataset we can say that the multi-layered hierarchical feature extraction i.e. the 128-to-64 neuron baseline model is more effective than the shallow network although high-capacity, for identifying the spatial differences in the apparel data.
+
+\section*{10. Discussion}
+
+\begin{enumerate}
+
+\item \textbf{Which optimization method was used?}\vspace{1mm}\\
+We used RandomizedSearchCV: a 5-fold cross-validated Randomized Search. GridSearchCV which tries every single possible combination takes too much time and computational resources. This method instead picks different combinations of hyperparameters to test from specific distributions. It saves a lot of time while still finding really good settings.
+
+\item \vspace{1mm}\textbf{Which hyperparameters were selected?}\vspace{1mm}\\
+The best model used 1 hidden layer with 256 neurons. To prevent overfitting, a dropout rate of 0.2 was used along with activation function as relu. The optimiser was Adam along with a learning rate of 0.001. The data was processed in batch sizes of 16 for 20 epochs.
+
+\item \vspace{1mm}\textbf{Did optimization improve performance?}\vspace{1mm}\\
+No. Even though our settings had a high cross-validation accuracy of 88.99\%, when it was tested on completely unseen data, the accuracy dropped to 88.13\%. This was lower than the baseline model which scored 88.75\% meaning the model overfitted a little to the training data and couldn't get a similar score on test.
+
+\item \vspace{1mm}\textbf{Which hyperparameter had the greatest impact?}\vspace{1mm}\\
+The greatest impact was decided by the optimiser and learning rate specifically - the Adam optimizer and an learning rate of 0.001. Adam adapts its step size while learning which keeps the training smooth. It also stops loss from fluctuating like it does when we have the standard SGD.
+
+\item \vspace{1mm}\textbf{Compare Grid Search and Randomized Search.}\vspace{1mm}\\
+Grid search is a brute-force approach. It tries every combination of settings which guarantees the best combination but it is computatinally heavy. On the other hand, Randomized Search takes random combinations of hyperparameters to test from specific distributions. It takes a lot lesser time and finds almost ideal settings.
+
+\item \vspace{1mm}\textbf{Recommend the best MLP configuration.}\vspace{1mm}\\
+The original baseline model with the first hidden layer of 128 neurons and 2nd hidden layer of 64 neurons is recommended. Having more layers helped the model learn the shapes of the clothing better. We could also predict that a two-layer model having ReLU and a dropout for safety of around 0.2 along with the Adam optimizer at a 0.001 learning rate could give ideal results.
+
+\end{enumerate}
+
+\section*{11. Additional Tasks}
+
+\textbf{Task: Multi-Layer Perceptron for XOR Gate}
+
+\vspace{4mm}
+\noindent\textbf{XOR Gate Training History (Weights \& Biases)}
+
+\vspace{2mm}
+\begin{center}
+\begin{tabular}{l p{7cm} p{6cm}}
+\toprule
+\textbf{Epoch} & \textbf{Hidden Layer ($W_1, b_1$)} & \textbf{Output Layer ($W_2, b_2$)} \\
+\midrule
+500 & $W_1$: [[-0.339, 0.871], [0.531, -0.217]]\newline $b_1$: [[0.173, -0.001]] & $W_2$: [[-0.476], [-0.341]]\newline $b_2$: [[0.464]] \\
+\addlinespace
+1000 & $W_1$: [[-0.912, 1.377], [1.209, -0.822]]\newline $b_1$: [[0.738, 0.533]] & $W_2$: [[-0.821], [-0.724]]\newline $b_2$: [[1.022]] \\
+\addlinespace
+2000 & $W_1$: [[-5.157, 5.330], [5.346, -5.113]]\newline $b_1$: [[2.649, 2.616]] & $W_2$: [[-5.521], [-5.524]]\newline $b_2$: [[8.068]] \\
+\addlinespace
+3000 & $W_1$: [[-5.710, 5.885], [5.898, -5.677]]\newline $b_1$: [[2.912, 2.889]] & $W_2$: [[-6.543], [-6.546]]\newline $b_2$: [[9.609]] \\
+\addlinespace
+4000 & $W_1$: [[-5.962, 6.139], [6.151, -5.933]]\newline $b_1$: [[3.033, 3.013]] & $W_2$: [[-7.056], [-7.058]]\newline $b_2$: [[10.381]] \\
+\bottomrule
+\end{tabular}
+\end{center}
+\textbf{Note:} MLP Converged correctly.
+
+\vspace{5mm}
+\begin{center}
+    \includegraphics[width=0.85\textwidth]{XOR_Gate.eps}
+\end{center}
+\textbf{Interpretation:} The XOR gate produces an output of 1 only when the inputs are different (e.g., [0,1] and [1,0]). Plotted on a 2D plane, the positive and negative classes form a diagonal cross, which makes them fundamentally not linearly separable by a single straight line. The Single-Layer Perceptron fails to solve this. However, by using a Multi-Layer Perceptron (MLP) trained via backpropagation, the hidden layer successfully warps the feature space. The grid visually demonstrates how the MLP dynamically curves its decision boundary as epochs progress (from Epoch 500 to Epoch 4000) to entirely encompass the inputs and correctly solve the non-linear XOR problem.
+
+%----------------------------------------------------------
+
+\section*{12. References}
+\begin{enumerate}
+\item Goodfellow et al., \emph{Deep Learning}.
+\item Bishop, \emph{Pattern Recognition and Machine Learning}.
+\item Haykin, \emph{Neural Networks and Learning Machines}.
+\item Fashion-MNIST Dataset.
+\item TensorFlow/Keras Documentation.
+\end{enumerate}
+
+\end{document}
