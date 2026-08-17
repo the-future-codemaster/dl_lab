@@ -12,7 +12,7 @@
 \usepackage{graphicx}
 \graphicspath{{../pdf/}{../jpeg/}}
 \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
-\DeclareGraphicsExtensions{.png}
+\DeclareGraphicsExtensions{.eps}
 \usepackage{epstopdf}
 % Removed invalid \epstopdfDeclareGraphicsRule
 \usepackage[cmex10]{amsmath}
@@ -47,7 +47,7 @@
 \usepackage{graphicx}
 \graphicspath{{../pdf/}{../jpeg/}}
 \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
-\DeclareGraphicsExtensions{.png}
+\DeclareGraphicsExtensions{.eps}
 % Removed duplicate epstopdf and invalid conversion rule
 \usepackage{multicol}
 \usepackage{multirow}
@@ -64,8 +64,7 @@
 \usepackage[T1]{fontenc} 
 \usepackage{amsmath}
 \interdisplaylinepenalty=2500
-\let\Bbbk\relax
-\usepackage[cmintegrals]{newtxmath}
+% Removed newtxmath to avoid Bbbk conflict
 \usepackage{bm}
 \usepackage{titlesec}
 \usepackage[margin=0.8in]{geometry}
@@ -663,13 +662,13 @@ Evaluate
 \section*{9. Mandatory Plots}
 
 \begin{center}
-    \includegraphics[width=0.85\textwidth]{sample_images-3.png}
+    \includegraphics[width=0.85\textwidth]{sample_images-3.eps}
 \end{center}
 \textbf{Interpretation:} The sample images display the CIFAR-10 classes properly loaded and plotted in a grid. This confirms that the dataset parsing and decoding into $32\times32\times3$ RGB formats was successful.
 
 \vspace{5mm}
 \begin{center}
-    \includegraphics[width=0.7\textwidth]{class_distribution-3.png}
+    \includegraphics[width=0.7\textwidth]{class_distribution-3.eps}
 \end{center}
 \textbf{Interpretation:} The bar chart demonstrates a perfectly uniform class distribution across all 10 categories. This balanced dataset prevents the model from developing a bias toward any majority class during training.
 
@@ -681,19 +680,19 @@ Evaluate
 
 \vspace{5mm}
 \begin{center}
-    \includegraphics[width=0.75\textwidth]{training_validation_accuracy-2.png}
+    \includegraphics[width=0.75\textwidth]{training_validation_accuracy-2.eps}
 \end{center}
 \textbf{Interpretation:} The training accuracy steadily climbs to $\sim87\%$ while the validation accuracy plateaus around $68\%$. This gap indicates that the model is beginning to overfit to the training data in later epochs.
 
 \vspace{5mm}
 \begin{center}
-    \includegraphics[width=0.75\textwidth]{training_validation_loss-2.png}
+    \includegraphics[width=0.75\textwidth]{training_validation_loss-2.eps}
 \end{center}
 \textbf{Interpretation:} Corresponding with the accuracy graph, the training loss decreases continuously, but the validation loss begins to rise after epoch 10. This confirms the overfitting trend and suggests early stopping could be beneficial.
 
 \vspace{5mm}
 \begin{center}
-    \includegraphics[width=0.85\textwidth]{confusion_matrix-2.png}
+    \includegraphics[width=0.85\textwidth]{confusion_matrix.png}
 \end{center}
 \textbf{Interpretation:} The confusion matrix shows strong true positive diagonal activations for classes like ship, automobile, and truck. However, the model struggles to differentiate between visually similar classes such as cats and dogs, leading to off-diagonal confusion.
 
