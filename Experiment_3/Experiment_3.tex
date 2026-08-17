@@ -14,7 +14,7 @@
 \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
 \DeclareGraphicsExtensions{.eps}
 \usepackage{epstopdf}
-\epstopdfDeclareGraphicsRule{.pdf}{png}{.png}{convert #1 \OutputFile}
+% Removed invalid \epstopdfDeclareGraphicsRule
 \usepackage[cmex10]{amsmath}
 \usepackage{array}
 \usepackage{amsmath}
@@ -48,8 +48,7 @@
 \graphicspath{{../pdf/}{../jpeg/}}
 \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
 \DeclareGraphicsExtensions{.eps}
-\usepackage{epstopdf}
-\epstopdfDeclareGraphicsRule{.pdf}{png}{.png}{convert #1 \OutputFile}
+% Removed duplicate epstopdf and invalid conversion rule
 \usepackage{multicol}
 \usepackage{multirow}
 \usepackage{rotating}
@@ -61,12 +60,11 @@
 \captionsetup{justification=centering}
 \usepackage{subcaption}
 \usepackage[noadjust]{cite}
-\ifCLASSINFOpdf
-\else
-\fi
+% Removed invalid IEEEtran conditional
 \usepackage[T1]{fontenc} 
 \usepackage{amsmath}
 \interdisplaylinepenalty=2500
+\let\Bbbk\relax
 \usepackage[cmintegrals]{newtxmath}
 \usepackage{bm}
 \usepackage{titlesec}
