@@ -699,30 +699,42 @@ Evaluate
 \section*{10. Additional Exercises}
 
 \begin{enumerate}
-\item Calculate the output size for a $64\times64$ image using a $5\times5$ kernel with stride 2 and padding 2.
+\item \textbf{Calculate the output size for a $64\times64$ image using a $5\times5$ kernel with stride 2 and padding 2.}
 \\ Output = $\frac{64 - 5 + 2(2)}{2} + 1 = 32.5 \rightarrow 32$. The output size is $32\times32$.
-\item Compute the trainable parameters of a convolution layer having 64 filters of size $3\times3$ and an RGB input.
+
+\item \textbf{Compute the trainable parameters of a convolution layer having 64 filters of size $3\times3$ and an RGB input.}
 \\ Parameters = $(3 \times 3 \times 3 + 1) \times 64 = 1792$.
-\item Compare ReLU and Sigmoid activation functions.
+
+\item \textbf{Compare ReLU and Sigmoid activation functions.}
 \\ ReLU avoids the vanishing gradient problem and is computationally cheaper, making it ideal for hidden layers. Sigmoid squashes values between 0 and 1, making it better suited for binary output layers but prone to saturation.
-\item Replace Max Pooling with Average Pooling and compare the results.
+
+\item \textbf{Replace Max Pooling with Average Pooling and compare the results.}
 \\ Average pooling yielded slightly better validation stability but softer feature extraction, resulting in a marginal difference in final validation accuracy ($68.2\%$ vs $67.9\%$).
-\item Increase the number of convolution filters from 16 to 64 and analyze the effect on accuracy and computation time.
+
+\item \textbf{Increase the number of convolution filters from 16 to 64 and analyze the effect on accuracy and computation time.}
 \\ Increasing filters allows the network to learn more complex patterns, improving accuracy. However, it exponentially increases the parameter count, significantly raising computation time and memory usage.
 \end{enumerate}
 
 \section*{11. Results}
 
-The Convolutional Neural Network was successfully trained and evaluated on the CIFAR-10 dataset with the following final metrics:
+The Convolutional Neural Network was successfully trained and evaluated on the CIFAR-10 dataset. The results are tabulated below:
 
-\begin{itemize}
-\item \textbf{Training Accuracy:} 87.01\%
-\item \textbf{Testing Accuracy:} 68.00\%
-\item \textbf{Precision (Macro Avg):} 0.68
-\item \textbf{Recall (Macro Avg):} 0.68
-\item \textbf{F1-score (Macro Avg):} 0.68
-\item \textbf{Number of Parameters:} 167,562
-\end{itemize}
+\vspace{5mm}
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{lc}
+\toprule
+\textbf{Metric} & \textbf{Value} \\
+\midrule
+Training Accuracy & 87.01\% \\
+Testing Accuracy & 68.00\% \\
+Precision (Macro Avg) & 0.68 \\
+Recall (Macro Avg) & 0.68 \\
+F1-score (Macro Avg) & 0.68 \\
+Number of Parameters & 167,562 \\
+\bottomrule
+\end{tabular}
+\end{center}
 
 \section*{12. Discussion}
 
