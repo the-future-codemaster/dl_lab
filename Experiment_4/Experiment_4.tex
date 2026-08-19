@@ -686,31 +686,31 @@ Include the following plots in the laboratory report.
 \begin{center}
     \includegraphics[width=0.85\textwidth]{sample_images(2).eps}
 \end{center}
-\textbf{Interpretation:} The sample images properly display various classes from the CIFAR-10 dataset, confirming successful data loading.
+\textbf{Interpretation:} The sample images display the CIFAR-10 classes, confirming successful data normalization and loading. This establishes a baseline understanding of the low $32\times32$ resolution challenges the VGG16 model will face during transfer learning.
 
 \vspace{5mm}
 \begin{center}
     \includegraphics[width=0.75\textwidth]{train_val_accuracy.eps}
 \end{center}
-\textbf{Interpretation:} The fine-tuned model demonstrates rapid convergence with training accuracy reaching over 96\%, while validation accuracy plateaus at $\sim$70\%, indicating overfitting.
+\textbf{Interpretation:} The fine-tuned VGG16 model shows rapid convergence, reaching 96\% training accuracy, while validation plateaus at $\sim$70\%. This indicates that while transfer learning accelerates learning, the model still overfits without heavy regularization.
 
 \vspace{5mm}
 \begin{center}
     \includegraphics[width=0.75\textwidth]{train_val_loss.eps}
 \end{center}
-\textbf{Interpretation:} The training loss decreases sharply, but the validation loss begins to increase after epoch 4, corroborating the overfitting observed in the accuracy plot.
+\textbf{Interpretation:} The training loss drops near zero, but validation loss diverges and increases after epoch 4. In the context of our fine-tuning experiment, this confirms that training for too many epochs degrades generalization on small datasets.
 
 \vspace{5mm}
 \begin{center}
     \includegraphics[width=0.75\textwidth]{confusion_matrix(1).eps}
 \end{center}
-\textbf{Interpretation:} The confusion matrix shows a strong diagonal, but visual similarities between classes like cat and dog lead to noticeable off-diagonal misclassifications.
+\textbf{Interpretation:} Strong diagonal values confirm the VGG16 model successfully distinguishes distinct objects like vehicles. However, off-diagonal confusion between cats and dogs highlights the limitations of pre-trained spatial features on blurry categories.
 
 \vspace{5mm}
 \begin{center}
     \includegraphics[width=0.85\textwidth]{misclassified-2.eps}
 \end{center}
-\textbf{Interpretation:} The misclassified images reveal that the model struggles primarily with complex backgrounds and visually ambiguous instances, which is typical for standard architectures without heavy augmentation.
+\textbf{Interpretation:} Misclassifications primarily occur on images with complex backgrounds or visual ambiguities. This suggests that while transfer learning provides excellent foundational features, dataset-specific augmentations are needed to push accuracy beyond 70\%.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
