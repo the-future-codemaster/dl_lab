@@ -699,20 +699,24 @@ Evaluate
 \section*{10. Additional Exercises}
 
 \begin{enumerate}
-\item \textbf{Calculate the output size for a $64\times64$ image using a $5\times5$ kernel with stride 2 and padding 2.}
-\\ Output = $\frac{64 - 5 + 2(2)}{2} + 1 = 32.5 \rightarrow 32$. The output size is $32\times32$.
+\item \textbf{Calculate the output size for a $64\times64$ image using a $5\times5$ kernel with stride 2 and padding 2.} \\[2mm]
+Output = $\frac{64 - 5 + 2(2)}{2} + 1 = 32.5 \rightarrow 32$. The output size is $32\times32$.
 
-\item \textbf{Compute the trainable parameters of a convolution layer having 64 filters of size $3\times3$ and an RGB input.}
-\\ Parameters = $(3 \times 3 \times 3 + 1) \times 64 = 1792$.
+\vspace{3mm}
+\item \textbf{Compute the trainable parameters of a convolution layer having 64 filters of size $3\times3$ and an RGB input.} \\[2mm]
+Parameters = $(3 \times 3 \times 3 + 1) \times 64 = 1792$.
 
-\item \textbf{Compare ReLU and Sigmoid activation functions.}
-\\ ReLU avoids the vanishing gradient problem and is computationally cheaper, making it ideal for hidden layers. Sigmoid squashes values between 0 and 1, making it better suited for binary output layers but prone to saturation.
+\vspace{3mm}
+\item \textbf{Compare ReLU and Sigmoid activation functions.} \\[2mm]
+ReLU avoids the vanishing gradient problem and is computationally cheaper, making it ideal for hidden layers. Sigmoid squashes values between 0 and 1, making it better suited for binary output layers but prone to saturation.
 
-\item \textbf{Replace Max Pooling with Average Pooling and compare the results.}
-\\ Average pooling yielded slightly better validation stability but softer feature extraction, resulting in a marginal difference in final validation accuracy ($68.2\%$ vs $67.9\%$).
+\vspace{3mm}
+\item \textbf{Replace Max Pooling with Average Pooling and compare the results.} \\[2mm]
+Average pooling yielded slightly better validation stability but softer feature extraction, resulting in a marginal difference in final validation accuracy ($68.2\%$ vs $67.9\%$).
 
-\item \textbf{Increase the number of convolution filters from 16 to 64 and analyze the effect on accuracy and computation time.}
-\\ Increasing filters allows the network to learn more complex patterns, improving accuracy. However, it exponentially increases the parameter count, significantly raising computation time and memory usage.
+\vspace{3mm}
+\item \textbf{Increase the number of convolution filters from 16 to 64 and analyze the effect on accuracy and computation time.} \\[2mm]
+Increasing filters allows the network to learn more complex patterns, improving accuracy. However, it exponentially increases the parameter count, significantly raising computation time and memory usage.
 \end{enumerate}
 
 \section*{11. Results}
