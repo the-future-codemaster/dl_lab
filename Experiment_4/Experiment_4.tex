@@ -837,12 +837,12 @@ AlexNet achieved the best accuracy among the standalone models (72.39\%), vastly
 
 \section*{20. Conclusion}
 
-In this experiment, I explored the evolution of deep CNN architectures and practically applied Transfer Learning to classify the CIFAR-10 dataset. The key takeaways from a practical and viva perspective are:
+The key takeaways are:
 
 \begin{itemize}
-\item \textbf{Architectural Evolution:} I learned how CNNs evolved from the simple 7-layer LeNet to the 50-layer ResNet, and how innovations like $3\times3$ filters (VGG), multi-scale Inception modules (GoogleNet), and skip connections (ResNet) solved problems like computational bloat and vanishing gradients.
-\item \textbf{Power of Transfer Learning:} Instead of training from scratch, I successfully repurposed a pre-trained VGG16 model. By freezing the base layers to retain general feature extractors (like edge detectors), I saved massive amounts of computational time.
-\item \textbf{Impact of Fine-Tuning:} I observed first-hand that fine-tuning (unfreezing the deeper layers) and using the Adam optimizer were critical steps. It allowed the network to adapt its high-level features specifically to CIFAR-10, boosting the validation accuracy to $\sim$70\%.
+\item \vspace{0.2cm}\textbf{Architectural Evolution:} Learnt how CNNs evolved from the simple 7-layer LeNet to the 50-layer ResNet and how innovations like $3\times3$ filters (VGG), multi-scale Inception modules (GoogleNet), and skip connections (ResNet) solved problems like computational bloat and vanishing gradients.
+\item \textbf{Power of Transfer Learning:} Instead of training from scratch, we repurposed a pre-trained VGG16 model. By freezing the base layers to retain general feature extractors (like edge detectors), thereby saving massive amounts of computational time.
+\item \textbf{Impact of Fine-Tuning:} Observed first-hand that fine-tuning (unfreezing the deeper layers) and using the Adam optimizer were critical steps. It allowed the network to adapt its high-level features specifically to CIFAR-10, boosting the validation accuracy to $\sim$70\%.
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
