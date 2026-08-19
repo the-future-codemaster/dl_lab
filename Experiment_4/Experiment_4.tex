@@ -692,13 +692,13 @@ Include the following plots in the laboratory report.
 \begin{center}
     \includegraphics[width=0.75\textwidth]{train_val_accuracy.eps}
 \end{center}
-\textbf{Interpretation:} The fine-tuned VGG16 model shows rapid convergence, reaching 96\% training accuracy, while validation plateaus at $\sim$70\%. This indicates that while transfer learning accelerates learning, the model still overfits without heavy regularization.
+\textbf{Interpretation:} The plot clearly shows the two-phase training. After fine-tuning begins at epoch 20, training accuracy rapidly shoots past 96\%, while validation accuracy jumps but plateaus at $\sim$70\%, indicating overfitting on the target dataset.
 
 \vspace{5mm}
 \begin{center}
     \includegraphics[width=0.75\textwidth]{train_val_loss.eps}
 \end{center}
-\textbf{Interpretation:} The training loss drops near zero, but validation loss diverges and increases after epoch 4. In the context of our fine-tuning experiment, this confirms that training for too many epochs degrades generalization on small datasets.
+\textbf{Interpretation:} Following the fine-tuning shift at epoch 20, training loss plummets toward zero, but validation loss begins diverging and increasing around epoch 24. This confirms that prolonged fine-tuning degrades generalization.
 
 \vspace{5mm}
 \begin{center}
