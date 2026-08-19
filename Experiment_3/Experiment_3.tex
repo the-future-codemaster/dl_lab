@@ -722,17 +722,41 @@ The Convolutional Neural Network was successfully trained and evaluated on the C
 \vspace{5mm}
 \begin{center}
 \renewcommand{\arraystretch}{1.3}
-\begin{tabular}{lc}
-\toprule
+\begin{tabular}{|p{5cm}|p{4cm}|}
+\hline
 \textbf{Metric} & \textbf{Value} \\
-\midrule
+\hline
 Training Accuracy & 87.01\% \\
+\hline
 Testing Accuracy & 68.00\% \\
+\hline
 Precision (Macro Avg) & 0.68 \\
+\hline
 Recall (Macro Avg) & 0.68 \\
+\hline
 F1-score (Macro Avg) & 0.68 \\
+\hline
 Number of Parameters & 167,562 \\
-\bottomrule
+\hline
+\end{tabular}
+\end{center}
+
+\subsection*{Dataset Dimensions}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|l|c|}
+\hline
+\textbf{Dataset Split} & \textbf{Dimensions} \\
+\hline
+Training Features (x\_train) & (50000, 32, 32, 3) \\
+\hline
+Training Labels (y\_train) & (50000, 1) \\
+\hline
+Testing Features (x\_test) & (10000, 32, 32, 3) \\
+\hline
+Testing Labels (y\_test) & (10000, 1) \\
+\hline
 \end{tabular}
 \end{center}
 
