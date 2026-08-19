@@ -94,21 +94,7 @@ Subject Code \& Name & CS3807 -- Deep Learning Laboratory & AY: 2026--27\\ \hlin
 
 To understand the working principle of Convolutional Neural Networks by implementing convolution, pooling, feature map visualization, and image classification using TensorFlow/Keras.
 
-\section*{2. Learning Outcomes}
-
-Students will be able to
-
-\begin{enumerate}
-\item Explain the convolution operation.
-\item Compute output dimensions using stride and padding.
-\item Visualize feature maps.
-\item Implement max pooling and average pooling.
-\item Calculate CNN parameters.
-\item Build a CNN for image classification.
-\item Evaluate CNN performance.
-\end{enumerate}
-
-\section*{3. Background Theory}
+\section*{2. Background Theory}
 
 A Convolutional Neural Network consists of
 
@@ -147,7 +133,7 @@ $F$ & Filter Size\\
 $P$ & Padding\\
 $S$ & Stride
 \end{tabular}
-\subsection*{3.1 Common Convolution Kernels}
+\subsection*{2.1 Common Convolution Kernels}
 
 A \textbf{kernel} (or \textbf{filter}) is a small matrix that slides over an input image to extract important visual features such as edges, textures, corners, and smooth regions. During convolution, the kernel is multiplied element-wise with the corresponding image pixels, and the results are summed to produce a single value in the output feature map. Different kernels highlight different image characteristics.
 
@@ -374,7 +360,7 @@ Motion Blur & $5\times5$ & Simulate motion & Video processing\\
 \hline
 \end{tabular}
 \end{center}
-\section*{4. Numerical Example 1: Convolution}
+\section*{3. Numerical Example 1: Convolution}
 
 Consider the following input image.
 
@@ -432,7 +418,7 @@ Feature Map
 \end{bmatrix}
 \]
 
-\section*{5. Numerical Example 2: Max Pooling}
+\section*{4. Numerical Example 2: Max Pooling}
 
 Feature map
 
@@ -496,7 +482,7 @@ Output
 \end{bmatrix}
 \]
 
-\section*{6. Numerical Example 3: Parameter Calculation}
+\section*{5. Numerical Example 3: Parameter Calculation}
 
 Suppose
 
@@ -531,7 +517,7 @@ Therefore,
 
 Total trainable parameters = 448.
 
-\section*{7. Dataset}
+\section*{6. Dataset}
 
 Dataset: CIFAR-10
 
@@ -542,7 +528,7 @@ Dataset: CIFAR-10
 \item Image Size : $32\times32\times3$
 \end{itemize}
 
-\section*{8. Experimental Procedure}
+\section*{7. Experimental Procedure}
 
 \textbf{Task 1}
 
@@ -659,7 +645,7 @@ Evaluate
 \item Classification Report
 \end{itemize}
 
-\section*{9. Mandatory Plots}
+\section*{8. Mandatory Plots}
 
 \begin{center}
     \includegraphics[width=0.85\textwidth]{sample_images-3.eps}
@@ -696,7 +682,7 @@ Evaluate
 \end{center}
 \textbf{Interpretation:} The confusion matrix shows strong true positive diagonal activations for classes like automobile and frog. However, the model heavily struggles to differentiate between cats and dogs, leading to 241 off-diagonal misclassifications.
 
-\section*{10. Additional Exercises}
+\section*{9. Additional Exercises}
 
 \begin{enumerate}
 \item \textbf{Calculate the output size for a $64\times64$ image using a $5\times5$ kernel with stride 2 and padding 2.} \\[2mm]
@@ -719,7 +705,7 @@ Average pooling yielded slightly better validation stability but softer feature 
 Increasing filters allows the network to learn more complex patterns, improving accuracy. However, it exponentially increases the parameter count, significantly raising computation time and memory usage.
 \end{enumerate}
 
-\section*{11. Results}
+\section*{10. Results}
 
 The Convolutional Neural Network was successfully trained and evaluated on the CIFAR-10 dataset. The results are tabulated below:
 
@@ -787,7 +773,7 @@ $3\times3$ & 2 & Valid & (None, 15, 15, 16) \\
 \end{tabular}
 \end{center}
 
-\section*{12. Discussion}
+\section*{11. Discussion}
 
 \begin{enumerate}
 \item \textbf{Why is convolution preferred over fully connected layers for images?}\\
@@ -804,11 +790,11 @@ Early feature maps represent low-level features like straight edges, curves, and
 Because of weight sharing. A single filter (e.g., $3\times3$) slides across the entire image, applying the exact same 9 weights everywhere. An MLP would require a unique weight for every single pixel connection.
 \end{enumerate}
 
-\section*{13. Conclusion}
+\section*{12. Conclusion}
 
 In this experiment, a custom Convolutional Neural Network was built from scratch to classify the CIFAR-10 dataset. The architecture successfully learned hierarchical spatial features, achieving 87 percent training accuracy and 68 percent validation accuracy. However, the distinct divergence in the loss and accuracy plots after epoch 8 highlighted significant overfitting, demonstrating that the model requires regularization techniques like dropout or heavy data augmentation for better generalization.
 
-\section*{14. References}
+\section*{13. References}
 
 \begin{enumerate}
 \item Goodfellow et al., \emph{Deep Learning}.
