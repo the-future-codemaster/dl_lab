@@ -4,7 +4,7 @@
 - `Lab2_Part1.ipynb`: Source code for the first part of Experiment 2.
 - `Lab2_Part2.ipynb`: Source code for the second part of Experiment 2.
 - `Experiment_2.tex`: LaTeX source code for the experimental report.
--  Experiment_2.pdf: Compiled PDF report of the experiment.
+- `Experiment_2.pdf`: Compiled PDF report of the experiment.
 - `README.md`: This documentation file.
 *(Note: Compile the `.tex` file to generate the PDF report).*
 
