@@ -3,6 +3,7 @@
 ## Folder Structure
 - `Lab3_Part1.ipynb`: Source code for Experiment 3.
 - `Experiment_3.tex`: LaTeX source code for the experimental report.
+- `Experiment_2.pdf`: Compiled PDF report of the experiment.
 - `README.md`: This documentation file.
 
 ## Dataset Information
