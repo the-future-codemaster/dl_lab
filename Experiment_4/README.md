@@ -3,6 +3,7 @@
 ## Folder Structure
 - `Lab4.ipynb`: Source code for Experiment 4 (Transfer Learning & Hyperparameter Tuning).
 - `Experiment_4.tex`: LaTeX source code for the experimental report.
+- `Experiment_4.pdf`: Compiled PDF report of the experiment.
 - `README.md`: This documentation file.
 
 ## Objective
