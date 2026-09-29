@@ -32,3 +32,5 @@ To compile the `Experiment_7.tex` file, the following packages must be installed
 1. Open `Lab7.ipynb` in Jupyter Notebook or Google Colab.
 2. Ensure all Python dependencies are installed.
 3. Run all cells sequentially from top to bottom.
+4. The notebook will automatically generate and save the required plots for the LaTeX report.
+5. Compile `Experiment_7.tex` using Overleaf or a local LaTeX distribution.
