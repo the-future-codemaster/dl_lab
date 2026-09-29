@@ -662,7 +662,7 @@ Final validation loss: 0.0924
     \centering
     \includegraphics[width=0.8\textwidth]{Plot9_Video_CM.eps}
 \end{figure}
-\textbf{Interpretation:} This confusion matrix confirms a perfect classification across the three video classes on our test subset. As established by the rapid learning curves, the spatial separation of these video classes by the frozen CNN features is so strong that the recurrent network can easily eliminate all classification errors.
+\textbf{Interpretation:} This confusion matrix illustrates strong but slightly imperfect classification across the three video classes on our test subset. While the model correctly identifies most activities (such as Archery), there is a minor misclassification where a Basketball instance is confused with BandMarching. This occasional confusion likely stems from overlapping dynamic motion patterns or the frozen CNN spatial features failing to perfectly isolate specific background contexts, though overall performance remains highly robust.
 \section*{15. Discussion Questions}
 \begin{enumerate}[itemsep=0.15cm]
     \item {\small \textbf{What is a recurrent neural network?}} \\[0.1cm]
